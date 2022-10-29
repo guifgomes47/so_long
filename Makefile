@@ -17,7 +17,7 @@ LIBFT 		= $(LIBFT_PATH)libft.a
 
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
-CFLAGS		+= -I $(INC_PATH) -I $(LIBFT_INC) -I $(MLX_PATH) 
+CFLAGS		+= -I $(INC_PATH) -I $(LIBFT_INC) -I $(MLX_PATH) -g
 CFLAGS 		+= -g -fsanitize=address
 
 LIB_FLAGS	= -lft -lmlx -lm -lbsd -lXext -lX11

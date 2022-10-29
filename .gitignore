@@ -1,0 +1,10 @@
+.cache
+.vscode
+compile_commands.json
+/backup
+!/include
+!/maps/
+!/lib/
+!/sprites
+!/src/
+!Makefile
