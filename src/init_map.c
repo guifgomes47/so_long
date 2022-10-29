@@ -6,7 +6,7 @@
 /*   By: guilhfer <guilhfer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 16:52:40 by guilhfer          #+#    #+#             */
-/*   Updated: 2022/10/29 00:47:48 by guilhfer         ###   ########.fr       */
+/*   Updated: 2022/10/29 20:24:46 by guilhfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	empty_line(char *temp)
 	i = 0;
 	if (temp[0] == '\n')
 	{
-		log_msg(1);
 		free(temp);
+		log_msg(1);
 		return (1);
 	}
 	while (temp[i] != '\0')
@@ -29,8 +29,8 @@ int	empty_line(char *temp)
 		{
 			if (temp[i + 1] == '\n' && temp[i + 2] == '1')
 			{
-				log_msg(1);
 				free(temp);
+				log_msg(1);
 				return (1);
 			}
 		}
@@ -61,7 +61,10 @@ char	**init_map(t_game *game, char *map_name)
 		free(line);
 	}
 	if (empty_line(temp) == 1)
-		return (NULL);
+	{
+		ft_clear_split(game->map);
+		exit (1);
+	}
 	map = ft_split(temp, '\n');
 	free(temp);
 	close(game->fd);

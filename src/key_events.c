@@ -6,7 +6,7 @@
 /*   By: guilhfer <guilhfer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 18:50:11 by guilhfer          #+#    #+#             */
-/*   Updated: 2022/10/29 01:03:50 by guilhfer         ###   ########.fr       */
+/*   Updated: 2022/10/29 18:26:26 by guilhfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	key_up(t_game *game)
 		if (game->map[game->player_y - 1][game->player_x] == 'E'
 			&& game->map_c_count == 0)
 		{
-			log_msg(0);
+			ft_printf("Game Complete!\n");
 			game_exit_sucess(game);
 		}
 		if (game->map[game->player_y - 1][game->player_x] != 'E'
@@ -46,7 +46,7 @@ static void	key_left(t_game *game)
 		if (game->map[game->player_y][game->player_x - 1] == 'E'
 			&& game->map_c_count == 0)
 		{
-			log_msg(0);
+			ft_printf("Game Complete!\n");
 			game_exit_sucess(game);
 		}
 		if (game->map[game->player_y][game->player_x - 1] != 'E'
@@ -71,7 +71,7 @@ static void	key_down(t_game *game)
 		if (game->map[game->player_y + 1][game->player_x] == 'E'
 			&& game->map_c_count == 0)
 		{
-			log_msg(0);
+			ft_printf("Game Complete!\n");
 			game_exit_sucess(game);
 		}
 		if (game->map[game->player_y + 1][game->player_x] != 'E'
@@ -96,7 +96,7 @@ static void	key_right(t_game *game)
 		if (game->map[game->player_y][game->player_x + 1] == 'E'
 			&& game->map_c_count == 0)
 		{
-			log_msg(0);
+			ft_printf("Game Complete!\n");
 			game_exit_sucess(game);
 		}
 		if (game->map[game->player_y][game->player_x + 1] != 'E'
@@ -115,7 +115,7 @@ static void	key_right(t_game *game)
 int	key_events(int key, t_game *game)
 {
 	if (key == KEY_ESC)
-		game_exit(game, 0);
+		game_exit_sucess(game);
 	else if (key == KEY_W)
 		key_up(game);
 	else if (key == KEY_A)

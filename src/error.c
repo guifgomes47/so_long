@@ -6,7 +6,7 @@
 /*   By: guilhfer <guilhfer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 20:43:02 by guilhfer          #+#    #+#             */
-/*   Updated: 2022/10/29 01:52:30 by guilhfer         ###   ########.fr       */
+/*   Updated: 2022/10/29 20:10:10 by guilhfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	log_msg(int log_number)
 	if (log_number == 0)
 	{
 		ft_printf("Game Complete!\n");
-		exit(0);
 	}
 	if (log_number == -1)
 		ft_printf("Error\nMap has not found\n");
@@ -33,23 +32,28 @@ void	log_msg(int log_number)
 		ft_printf("Error\nMap file must be .ber\n");
 	if (log_number == 6)
 		ft_printf("Error\nMap wall problem\n");
-	exit(1);
 }
 
-int	check_arg(char *argv)
+void	check_arg(int argc, char **argv)
 {
 	char	*ext;
 
-	if (!argv)
-		return (1);
-	ext = ft_strrchr(argv, '.');
-	if (ext == NULL)
+	if (argc != 2)
+	{
+		log_msg(-1);
+		exit(1);
+	}
+	if (!argv[1])
+		exit(1);
+	ext = ft_strrchr(argv[1], '.');
+	if ((ft_strlen(argv[1]) < 4) || ext == NULL)
 	{
 		log_msg(5);
-		return (1);
+		exit(1);
 	}
-	if (ft_strncmp(ext, ".ber", 5) == 0)
-		return (0);
-	log_msg(5);
-	return (1);
+	if (ft_strncmp(ext, ".ber", 5) != 0)
+	{
+		log_msg(5);
+		exit(1);
+	}
 }

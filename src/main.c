@@ -6,7 +6,7 @@
 /*   By: guilhfer <guilhfer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:24:24 by guilhfer          #+#    #+#             */
-/*   Updated: 2022/10/29 01:53:23 by guilhfer         ###   ########.fr       */
+/*   Updated: 2022/10/29 20:29:15 by guilhfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,24 +56,21 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
+	check_arg(argc, argv);
 	game_init(&game);
-	if (check_arg(argv[1]) == 1)
-		return (1);
-	if (argc == 2)
+	game.map = init_map(&game, argv[1]);
+	if (!game.map)
 	{
-		game.map = init_map(&game, argv[1]);
-		if (!game.map)
-		{
-			ft_clear_split(game.map);
-			log_msg(-1);
-		}
-		if (map_check(&game) == 0)
-			game_play(&game);
-		else
-		{
-			ft_clear_split(game.map);
-			log_msg(1);
-		}
+		ft_clear_split(game.map);
+		log_msg(-1);
+		exit (1);
+	}
+	if (map_check(&game) == 0)
+		game_play(&game);
+	else
+	{
+		ft_clear_split(game.map);
+		exit(1);
 	}
 	game_exit_sucess(&game);
 	return (0);
