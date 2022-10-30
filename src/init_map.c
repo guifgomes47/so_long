@@ -6,7 +6,7 @@
 /*   By: guilhfer <guilhfer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 16:52:40 by guilhfer          #+#    #+#             */
-/*   Updated: 2022/10/29 20:24:46 by guilhfer         ###   ########.fr       */
+/*   Updated: 2022/10/29 23:01:16 by guilhfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,34 +39,42 @@ int	empty_line(char *temp)
 	return (0);
 }
 
+char	*line_format(int fd)
+{
+	char	*line;
+	char	*temp;
+	char	*swap;
+
+	line = ft_strdup("");
+	while (1)
+	{
+		temp = get_next_line(fd);
+		if (!temp)
+			break ;
+		swap = line;
+		line = ft_strjoin(swap, temp);
+		free(swap);
+		free(temp);
+	}
+	return (line);
+}
+
 char	**init_map(t_game *game, char *map_name)
 {
 	char	**map;
-	char	*swap;
 	char	*line;
-	char	*temp;
 
 	game->fd = open(map_name, O_RDONLY);
 	if (game->fd == -1)
 		return (NULL);
-	temp = ft_strdup("");
-	while (1)
+	line = line_format(game->fd);
+	if (empty_line(line) == 1)
 	{
-		line = get_next_line(game->fd);
-		if (!line)
-			break ;
-		swap = temp;
-		temp = ft_strjoin(swap, line);
-		free(swap);
-		free(line);
+		free_split(game->map);
+		exit(1);
 	}
-	if (empty_line(temp) == 1)
-	{
-		ft_clear_split(game->map);
-		exit (1);
-	}
-	map = ft_split(temp, '\n');
-	free(temp);
+	map = ft_split(line, '\n');
+	free(line);
 	close(game->fd);
 	return (map);
 }
