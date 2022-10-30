@@ -32,12 +32,6 @@ COLOR_G			= \e[32m
 
 all : $(NAME)
 
-$(LIBFT):
-	@make -C $(LIBFT_PATH)
-
-$(MLX):
-	@make -C $(MLX_PATH)
-
 $(OBJ_DIRS):
 	mkdir -p $@
 
@@ -45,16 +39,18 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ_DIRS) $(OBJ) $(MLX) $(LIBFT)
-	$(MAKE) --no-print-directory -C $(LIBFT_PATH)
-	$(MAKE) --no-print-directory -C $(MLX_PATH)
 	@printf "$(COLOR_G)Making $(NAME)\n$(COLOR_W)"
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L $(LIBFT_PATH) -L $(MLX_PATH) $(LIB_FLAGS)
 	@printf "$(COLOR_G)Done\n$(COLOR_W)"
 
+$(LIBFT):
+	@make -C $(LIBFT_PATH)
+
+$(MLX):
+	@make -C $(MLX_PATH)
+
 clean :
 	@printf "$(COLOR_R)Cleaning $(NAME) objects...\n$(COLOR_W)"
-	$(MAKE) --no-print-directory fclean -C $(LIBFT_PATH)
-	$(MAKE) --no-print-directory clean -C $(MLX_PATH)
 	$(RM) $(OBJ)
 	$(RM) $(OBJ_DIRS)
 	@printf "$(COLOR_G)Done\n$(COLOR_W)"
