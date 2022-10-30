@@ -2,7 +2,7 @@ NAME		= so_long
 
 FILES		= main.c error.c  game_exit.c  img_setup.c  \
 	init_map.c map_check.c  map_to_win.c player_postion.c \
-	key_events.c
+	key_events.c map_valid.c
 
 SRC_PATH	= src/
 OBJ_PATH	= obj/
@@ -18,7 +18,6 @@ LIBFT 		= $(LIBFT_PATH)libft.a
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 CFLAGS		+= -I $(INC_PATH) -I $(LIBFT_INC) -I $(MLX_PATH) -g
-CFLAGS 		+= -g -fsanitize=address
 
 LIB_FLAGS	= -lft -lmlx -lm -lbsd -lXext -lX11
 

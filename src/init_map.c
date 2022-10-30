@@ -6,7 +6,7 @@
 /*   By: guilhfer <guilhfer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 16:52:40 by guilhfer          #+#    #+#             */
-/*   Updated: 2022/10/29 23:01:16 by guilhfer         ###   ########.fr       */
+/*   Updated: 2022/10/30 04:51:15 by guilhfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	**init_map(t_game *game, char *map_name)
 	line = line_format(game->fd);
 	if (empty_line(line) == 1)
 	{
-		free_split(game->map);
+		free_map(game->map);
 		exit(1);
 	}
 	map = ft_split(line, '\n');

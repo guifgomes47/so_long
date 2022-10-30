@@ -6,7 +6,7 @@
 /*   By: guilhfer <guilhfer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 17:40:39 by guilhfer          #+#    #+#             */
-/*   Updated: 2022/10/29 23:33:06 by guilhfer         ###   ########.fr       */
+/*   Updated: 2022/10/30 06:49:59 by guilhfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ int	map_rect(t_game *game)
 	while (game->map[i] != NULL)
 	{
 		if ((int)ft_strlen(game->map[i]) != game->map_width)
+		{
+			log_msg(2);
 			return (1);
+		}
 		i++;
 	}
 	return (0);
@@ -111,7 +114,7 @@ int	map_check(t_game *game)
 		game->map_height++;
 	game->map_width = (int)ft_strlen(game->map[0]);
 	if (map_rect(game) != 0)
-		log_msg(2);
+		return (1);
 	element_count = elements_count(game);
 	if (element_count != 0)
 		log_msg(3);

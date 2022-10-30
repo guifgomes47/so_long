@@ -6,13 +6,13 @@
 /*   By: guilhfer <guilhfer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 17:29:58 by guilhfer          #+#    #+#             */
-/*   Updated: 2022/10/29 21:58:23 by guilhfer         ###   ########.fr       */
+/*   Updated: 2022/10/30 06:21:35 by guilhfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-void	free_split(char **ptr)
+void	free_map(char **ptr)
 {
 	int	i;
 
@@ -35,7 +35,7 @@ int	game_exit(t_game *game, int status)
 	mlx_destroy_window(game->mlx_ptr, game->mlx_win);
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
-	free_split(game->map);
+	free_map(game->map);
 	exit(status);
 }
 

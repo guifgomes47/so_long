@@ -6,7 +6,7 @@
 /*   By: guilhfer <guilhfer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 20:43:02 by guilhfer          #+#    #+#             */
-/*   Updated: 2022/10/29 20:51:06 by guilhfer         ###   ########.fr       */
+/*   Updated: 2022/10/30 04:55:24 by guilhfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,21 @@ void	log_msg(int log_number)
 		ft_printf("Error\nMap file must be .ber\n");
 	if (log_number == 6)
 		ft_printf("Error\nMap wall problem\n");
+	if (log_number == 7)
+		ft_printf("Error\nMap doesn't have a valid pathway\n");
 }
 
 void	check_arg(int argc, char **argv)
 {
 	char	*ext;
 
-	if (argc != 2)
+	if (argc != 2 || !argv[1])
 	{
 		log_msg(-1);
 		exit(1);
 	}
-	if (!argv[1])
-		exit(1);
 	ext = ft_strrchr(argv[1], '.');
-	if ((ft_strlen(argv[1]) < 4) || ext == NULL)
+	if ((ft_strlen(argv[1]) < 4) || !ext)
 	{
 		log_msg(5);
 		exit(1);

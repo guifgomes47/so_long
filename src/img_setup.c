@@ -6,7 +6,7 @@
 /*   By: guilhfer <guilhfer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 17:50:05 by guilhfer          #+#    #+#             */
-/*   Updated: 2022/10/29 20:44:09 by guilhfer         ###   ########.fr       */
+/*   Updated: 2022/10/30 06:13:01 by guilhfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	img_setup(t_game *game)
 {
-	game->img_width = 32;
-	game->img_height = 32;
+	game->img_width = DEFAULT_WIDTH;
+	game->img_height = DEFAULT_HEIGHT;
 	game->img_empty_space = mlx_xpm_file_to_image(game->mlx_ptr, EMPTY_SPACE,
 			&game->img_width, &game->img_height);
 	game->img_wall = mlx_xpm_file_to_image(game->mlx_ptr, WALL,

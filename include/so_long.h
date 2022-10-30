@@ -6,7 +6,7 @@
 /*   By: guilhfer <guilhfer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 16:54:08 by guilhfer          #+#    #+#             */
-/*   Updated: 2022/10/29 22:40:21 by guilhfer         ###   ########.fr       */
+/*   Updated: 2022/10/30 07:01:03 by guilhfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
+# define DEFAULT_HEIGHT 32
+# define DEFAULT_WIDTH 32
 
 typedef struct s_game
 {
@@ -46,6 +48,8 @@ typedef struct s_game
 	int		map_e_count;
 	int		map_p_count;
 	int		map_c_count;
+	int		c_acess;
+	int		e_acess;
 	int		total_line_char;
 
 	int		img_width;
@@ -62,16 +66,20 @@ typedef struct s_game
 }			t_game;
 
 int			main(int argc, char **argv);
-int			init_build(t_game *game);
 void		check_arg(int argc, char **argv);
 char		**init_map(t_game *game, char *map_name);
+
+int			map_check(t_game *game);
+void		player_position(t_game *game);
+int			map_valid(t_game *game, char *argv);
+
 void		img_setup(t_game *game);
 int			map_to_win(t_game *game);
-void		free_split(char **ptr);
-int			map_check(t_game *game);
-void		player_postion(t_game *game);
+
 int			key_events(int key, t_game *game);
+void		free_map(char **ptr);
 int			game_exit(t_game *game, int status);
 int			game_exit_sucess(t_game *game);
 void		log_msg(int log_number);
+
 #endif

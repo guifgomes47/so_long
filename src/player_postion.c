@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: guilhfer <guilhfer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 18:25:39 by guilhfer          #+#    #+#             */
-/*   Updated: 2022/10/29 00:21:23 by guilhfer         ###   ########.fr       */
+/*   Created: 2022/10/30 05:58:29 by guilhfer          #+#    #+#             */
+/*   Updated: 2022/10/30 05:58:33 by guilhfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-void	player_postion(t_game *game)
+void	player_position(t_game *game)
 {
 	int	x;
 	int	y;

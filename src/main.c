@@ -6,7 +6,7 @@
 /*   By: guilhfer <guilhfer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 14:24:24 by guilhfer          #+#    #+#             */
-/*   Updated: 2022/10/29 21:58:23 by guilhfer         ###   ########.fr       */
+/*   Updated: 2022/10/30 06:24:45 by guilhfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static void	game_init(t_game *game)
 	game->map_e_count = 0;
 	game->map_p_count = 0;
 	game->map_c_count = 0;
+	game->c_acess = 0;
+	game->e_acess = 0;
 	game->total_line_char = 0;
 	game->img_width = 0;
 	game->img_height = 0;
@@ -45,7 +47,7 @@ static void	game_play(t_game *game)
 	game->mlx_win = mlx_new_window(game->mlx_ptr, game->img_width
 			* game->map_width, game->img_height * game->map_height, GAME_NAME);
 	map_to_win(game);
-	player_postion(game);
+	player_position(game);
 	mlx_key_hook(game->mlx_win, key_events, game);
 	mlx_hook(game->mlx_win, 17, 1L << 0, game_exit_sucess, game);
 	mlx_loop_hook(game->mlx_ptr, map_to_win, game);
@@ -61,15 +63,15 @@ int	main(int argc, char **argv)
 	game.map = init_map(&game, argv[1]);
 	if (!game.map)
 	{
-		free_split(game.map);
+		free_map(game.map);
 		log_msg(-1);
-		exit (1);
+		exit(1);
 	}
-	if (map_check(&game) == 0)
+	if (map_check(&game) == 0 && map_valid(&game, argv[1]) == 0)
 		game_play(&game);
 	else
 	{
-		free_split(game.map);
+		free_map(game.map);
 		exit(1);
 	}
 	game_exit_sucess(&game);
