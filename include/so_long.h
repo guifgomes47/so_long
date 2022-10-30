@@ -6,7 +6,7 @@
 /*   By: guilhfer <guilhfer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 16:54:08 by guilhfer          #+#    #+#             */
-/*   Updated: 2022/10/29 01:58:34 by guilhfer         ###   ########.fr       */
+/*   Updated: 2022/10/29 22:40:21 by guilhfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ typedef struct s_game
 
 int			main(int argc, char **argv);
 int			init_build(t_game *game);
-int			check_arg(char *argv);
+void		check_arg(int argc, char **argv);
 char		**init_map(t_game *game, char *map_name);
 void		img_setup(t_game *game);
 int			map_to_win(t_game *game);
-void		ft_clear_split(char **ptr);
+void		free_split(char **ptr);
 int			map_check(t_game *game);
 void		player_postion(t_game *game);
 int			key_events(int key, t_game *game);
